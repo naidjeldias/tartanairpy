@@ -7,29 +7,20 @@ Example script for downloading using the TartanAir dataset toolbox.
 
 # General imports.
 import sys
+import argparse
 
 # Local imports.
 sys.path.append('..')
 import tartanair as ta
 
+parser = argparse.ArgumentParser()
+parser.add_argument('--data-root', type=str, required=True)
+args = parser.parse_args()
+
 # Create a TartanAir object.
-tartanair_data_root = '/my/path/to/root/folder/for/tartanair-v2'
+tartanair_data_root = args.data_root
 
 ta.init(tartanair_data_root)
-
-# Download data from following environments.
-env = [ "Prison",
-        "Ruins",
-        "UrbanConstruction",
-]
-
-ta.download(env = env, 
-              difficulty = ['easy', 'hard'], 
-              modality = ['image', 'depth'],  
-              camera_name = ['lcam_front', 'lcam_right', 'lcam_back', 'lcam_left', 'lcam_top', 'lcam_bottom'], 
-              unzip = True,
-              delete_zip = False,
-              num_workers = 4)
 
 # Can also download via a yaml config file.
 ta.download(config = 'download_config.yaml')
