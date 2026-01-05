@@ -1,9 +1,31 @@
 # Config specifying which trajectories to download from the remote.
 
-  env: ['ArchVizTinyHouseDay']
+  env: [
+    'AmericanDiner', 
+    'ArchVizTinyHouseDay',
+    'CountryHouse',
+    'OldBrickHouseDay',
+    'RetroOffice',
+    ]
+  # env: [
+  #   'AmericanDiner', 
+  #   'ArchVizTinyHouseDay', 
+  #   'ArchVizTinyHouseNight', 
+  #   'CarWelding', 
+  #   'CoalMine', 
+  #   'CountryHouse', 
+  #   'CyberPunkDowntown', 
+  #   'Hospital',
+  #   'Office',
+  #   'OldBrickHouseDay',
+  #   'OldBrickHouseNight',
+  #   'RetroOffice',
+  #   'Sewerage',
+  #   'Supermarket'
+  #   ]
   difficulty: ['easy']
-  modality: ['image', 'depth', 'seg', 'imu'] 
-  camera_name: ['lcam_fish', 'lcam_front', 'lcam_left', 'lcam_right', 'lcam_back', 'lcam_top', 'lcam_bottom']
+  modality: ['image', 'depth'] 
+  camera_name: ['lcam_front', 'lcam_right', 'lcam_back', 'lcam_left', 'lcam_top', 'lcam_bottom']
   unzip: True
   delete_zip: False
-  num_workers: 4
+  num_workers: 16
