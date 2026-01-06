@@ -33,6 +33,7 @@ ta.init(tartanair_data_root)
 # Create the requested camera models and their parameters.
 R_raw_new0 = Rotation.from_euler('y', 0, degrees=True).as_matrix().tolist()
 R_raw_new1 = Rotation.from_euler('y', 90, degrees=True).as_matrix().tolist()
+R_raw_new2 = Rotation.from_euler('y', 180, degrees=True).as_matrix().tolist()
 
 cam_model_0 = {'name': 'pinhole', 
                'raw_side': 'left', # TartanAir has two cameras, one on the left and one on the right. This parameter specifies which camera to use.
@@ -46,6 +47,12 @@ cam_model_1 = {'name': 'pinhole',
                         {'fx': 535.4, 'fy': 539.2, 'cx': 320.1, 'cy': 247.6, 'width': 640, 'height': 480},
                         'R_raw_new': R_raw_new1}
 
+cam_model_2 = {'name': 'pinhole', 
+               'raw_side': 'left', # TartanAir has two cameras, one on the left and one on the right. This parameter specifies which camera to use.
+               'params': 
+                        {'fx': 535.4, 'fy': 539.2, 'cx': 320.1, 'cy': 247.6, 'width': 640, 'height': 480},
+                        'R_raw_new': R_raw_new2}
+
 
 for env, traj_list in ENV_TRAJ_LIST:
     for traj in traj_list:
@@ -53,6 +60,6 @@ for env, traj_list in ENV_TRAJ_LIST:
                      difficulty = 'easy', 
                      trajectory_id = [traj], 
                      modality = ['image', 'depth'], 
-                     new_camera_models_params=[cam_model_0, cam_model_1], 
+                     new_camera_models_params=[cam_model_0, cam_model_1, cam_model_2], 
                      num_workers = 4,
                      device = "cuda") # or cpu
